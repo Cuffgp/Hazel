@@ -31,7 +31,7 @@ namespace Hazel {
 		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
-		// TEMPORARY: should eebntually use Hazel key code
+		// TEMPORARY: should eventually use Hazel key code
 
 		io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
 		io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
@@ -84,7 +84,7 @@ namespace Hazel {
 
 	void ImGuiLayer::OnEvent(Event& event)
 	{
-		//HZ_TRACE("ImGuiLayer: {0}", event);
+		HZ_TRACE("ImGuiLayer: {0}", event);
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
 		dispatcher.Dispatch<MouseButtonReleasedEvent>(HZ_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
