@@ -24,7 +24,7 @@ workspace "Hazel"
 project "Hazel"
 	location "Hazel"
 	kind "SharedLib"
-	language "c++"
+	language "C++"
 	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -69,16 +69,17 @@ project "Hazel"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} \" ../bin/" .. outputdir .. "/Sandbox\")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		runtime "Debug"
 		symbols "On"
+		buildoptions "/MDd"
 
 	filter "configurations:Release"
-		defines "HZ_DEBUG"
+		defines "HZ_RELEASE"
 		runtime "Release"
 		optimize "On"
 
@@ -90,7 +91,7 @@ project "Hazel"
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
-	language "c++"
+	language "C++"
 	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -126,6 +127,7 @@ project "Sandbox"
 		defines "HZ_DEBUG"
 		runtime "Debug"
 		symbols "On"
+		buildoptions "/MDd"
 
 	filter "configurations:Release"
 		defines "HZ_DEBUG"
