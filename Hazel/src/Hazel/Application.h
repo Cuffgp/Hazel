@@ -14,7 +14,7 @@
 
 namespace Hazel {
 
-	class HAZEL_API Application
+	class   Application
 	{
 	public:
 		Application();
