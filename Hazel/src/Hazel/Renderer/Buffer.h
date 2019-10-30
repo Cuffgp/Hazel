@@ -73,7 +73,7 @@ namespace Hazel {
 		BufferLayout(const std::initializer_list<BufferElement>& elements)
 			: m_Elements(elements) 
 		{
-			CalculateOffstsAndStride();
+			CalculateOffsetsAndStride();
 		}
 
 		inline uint32_t GetStride() const { return m_Stride; }
@@ -84,7 +84,7 @@ namespace Hazel {
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
 	private:
-		void CalculateOffstsAndStride()
+		void CalculateOffsetsAndStride()
 		{
 			uint32_t offset = 0;
 			m_Stride = 0;
