@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Hazel/Input.h"
-#include "Hazel/KeyCodes.h"
+#include "Hazel/Core/Input.h"
+#include "Hazel/Core/KeyCodes.h"
 
 namespace Hazel {
 
@@ -55,7 +55,7 @@ namespace Hazel {
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		m_ZoomLevel -= (float)e.GetWidth() / (float)e.GetHeight();
+		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		
 		return false;
