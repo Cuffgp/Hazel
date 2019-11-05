@@ -16,8 +16,10 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Sandbox2D.cpp" />
+    <ClCompile Include="src\Game2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Sandbox2D.h" />
+    <ClInclude Include="src\Game2D.h" />
   </ItemGroup>
 </Project>

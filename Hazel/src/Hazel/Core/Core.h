@@ -2,6 +2,7 @@
 
 #include <memory>
 
+#define HZ_PLATFORM_WINDOWS
 #ifdef HZ_PLATFORM_WINDOWS
 
 #else
