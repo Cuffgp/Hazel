@@ -7,13 +7,13 @@
 
 
 Game2D::Game2D()
-	: Layer("Game2D"), m_CameraController(1280.0f / 720.0f), m_cmap("assets/colormap/MPL_jet.rgb", 0, 20)
+	: Layer("Game2D"), m_CameraController(1280.0f / 720.0f), m_cmap("assets/colormap/MPL_jet.rgb", 0,40)
 {
 }
 
 void Game2D::OnAttach()
 {
-
+	m_cmap.SetRange(0, m_rows + m_cols);
 }
 
 void Game2D::OnDetach()
@@ -24,24 +24,24 @@ void Game2D::OnDetach()
 void Game2D::OnUpdate(Hazel::Timestep ts)
 {
 	m_fps = 1.0f / ts;
+
 	// Update
 	m_CameraController.OnUpdate(ts);
 
 	// Render
-
 	Hazel::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Hazel::RenderCommand::Clear();
 
 	Hazel::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	for(int x=0; x < 10; x++)
-		for (int y = 0; y < 10; y++)
+	for(int x=0; x < m_rows; x++)
+		for (int y = 0; y < m_cols; y++)
 		{
-			m_SquareColor = m_cmap.Get(x + y);
-			Hazel::Renderer2D::DrawQuad({x*0.11f - 0.5f, y*0.11f - 0.5f}, { 0.1f, 0.1f }, m_SquareColor);
+			glm::vec4 m_SquareColor = m_cmap.Get(float(x + y));
+			glm::vec2 position = (m_tileSize * glm::vec2{ x, y }) + m_boarderOffset + m_startOffset;
+			Hazel::Renderer2D::DrawQuad(position, m_tileScale, m_SquareColor);
 		}
 	
-
 	Hazel::Renderer2D::EndScene();
 }
 

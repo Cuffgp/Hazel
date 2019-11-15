@@ -37,11 +37,12 @@ namespace Hazel {
 					st2 = result.substr(s1);
 					f2 = std::stof(st2, &s1);
 					f3 = std::stof(st2.substr(s1));
+				
+					glm::vec4 cvec(f1, f2, f3, 1.0f);
+					m_Cmap.insert(std::pair<int, glm::vec4>(linecount - 3, cvec));
 				}
 				linecount++;
 
-				glm::vec4 cvec(f1, f2, f3, 1.0f);
-				m_Cmap.insert(std::pair<int, glm::vec4>(linecount - 3, cvec));
 			}
 
 		}
@@ -49,6 +50,12 @@ namespace Hazel {
 		{
 			HZ_CORE_ERROR("Could not open file '{0}'", filepath);
 		}
+	}
+
+	void ColorMap::SetRange(float min, float max)
+	{
+		m_min = min;
+		m_max = max;
 	}
 
 	glm::vec4 ColorMap::Get(float value)

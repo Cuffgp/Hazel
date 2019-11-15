@@ -11,6 +11,7 @@ namespace Hazel {
 		ColorMap(const std::string& filepath, float min, float max);
 
 		void Load(const std::string& filepath, float min, float max);
+		void SetRange(float min, float max);
 		glm::vec4 Get(float value);
 
 	private:

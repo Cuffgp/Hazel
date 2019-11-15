@@ -217,8 +217,8 @@ public:
 	Sandbox()
 	{
 		//PushLayer(new ExampleLayer());
-		//PushLayer(new Sandbox2D());
-		PushLayer(new Game2D());
+		PushLayer(new Sandbox2D());
+		//PushLayer(new Game2D());
 	}
 
 	~Sandbox()
